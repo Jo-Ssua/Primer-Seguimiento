@@ -15,8 +15,7 @@ public class InfrastructureDepartment {
     public InfrastructureDepartment() throws Exception {
 
         billboards = new ArrayList<Billboard>();
-        loadBillboard("Test2.csv");
-        System.out.println(getBillboardsPerBrand());
+        
 
 
 
