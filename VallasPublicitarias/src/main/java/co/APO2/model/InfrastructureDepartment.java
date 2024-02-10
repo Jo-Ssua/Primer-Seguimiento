@@ -15,7 +15,9 @@ public class InfrastructureDepartment {
     public InfrastructureDepartment() throws Exception {
 
         billboards = new ArrayList<Billboard>();
-        //loadBillboard("Test.csv");
+        loadBillboard("Test2.csv");
+        System.out.println(getBillboardsPerBrand());
+
 
 
 
@@ -41,7 +43,7 @@ public class InfrastructureDepartment {
 
 
         File archivo = new File(resource);
-        
+
         FileReader fr = new FileReader(archivo);
         BufferedReader br = new BufferedReader(fr);
         String line = br.readLine();
@@ -64,7 +66,7 @@ public class InfrastructureDepartment {
                     double height = Double.parseDouble(columns[1]);
                     boolean inUse = Boolean.parseBoolean(columns[2]);
                     String brand = columns[3];
-                    
+
 
 
                     if(width > 0 && height > 0){
@@ -120,7 +122,7 @@ public class InfrastructureDepartment {
         for (int i = 0; i<billboards.size(); i++){
             sum+= billboards.get(i).getHeight();
 
-            
+
         }
 
         return sum/billboards.size();
@@ -131,7 +133,7 @@ public class InfrastructureDepartment {
         double sum = 0;
         for (int i = 0; i<billboards.size(); i++){
             sum+= billboards.get(i).getWidth();
-            
+
         }
         return sum/billboards.size();
 
@@ -142,8 +144,8 @@ public class InfrastructureDepartment {
         for (int i = 0; i < billboards.size(); i++) {
             sum += billboards.get(i).calculateArea();
 
-        
-            
+
+
         }
 
         return sum/billboards.size();
@@ -160,6 +162,9 @@ public class InfrastructureDepartment {
 
             }
         }
+        if(msg.equals("ACTIVE BILLBOARDS\n| W  |  H  |  inUse  |  Brand \n")){
+            return "No hay vallas activas";
+        }
 
         return msg;
     }
@@ -169,14 +174,13 @@ public class InfrastructureDepartment {
     public  String getBillboardsPerBrand(){
         String msg = "";
         msg += "BILLBOARDS PER BRAND\n";
-        int x = 0;
 
 
         for(int i = 0; i < billboards.size() ; i++) {
             int counter = 1;
-            for(int j = 1; j< billboards.size()- x; j++){
+            for(int j = i +1; j< billboards.size(); j++){
 
-                if(billboards.get(i).getBrand().equals(billboards.get(j).getBrand()) && i != j){
+                if(billboards.get(i).getBrand().equals(billboards.get(j).getBrand())){
                     counter += 1;
                 }
 
@@ -186,7 +190,7 @@ public class InfrastructureDepartment {
 
 
             }
-            x += 1;
+
 
 
 
@@ -198,6 +202,7 @@ public class InfrastructureDepartment {
 
 
 
-}
 
+
+}
 
