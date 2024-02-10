@@ -11,34 +11,16 @@ public class InfrastructureDepartment {
 
     private ArrayList<Billboard> billboards = new ArrayList<>();
 
-    public static final String BILLBOARD_FILE_NAME = "Test.csv";
-
-
 
     public InfrastructureDepartment() throws Exception {
 
         billboards = new ArrayList<Billboard>();
 
-        loadBillboard();
-        System.out.println(getActivebillboards());
-
-
 
     }
 
-    private void saveBillboards() throws IOException {
-        String resource = Main.class.getClassLoader().getResource(InfrastructureDepartment.BILLBOARD_FILE_NAME).getFile();
-        File archivo = new File(resource);
-        BufferedWriter writer = new BufferedWriter(new FileWriter(archivo));
-        String temp = toString();
-        System.out.println(temp);
 
-        writer.write(temp);
-        writer.flush();
-        writer.close();
-        System.out.println(resource);
 
-    }
 
     public void addBillboard(double w, double h, boolean iu, String b) {
 
@@ -46,14 +28,14 @@ public class InfrastructureDepartment {
         billboards.add(temp);
 
 
-        }
+    }
 
 
 
 
 
-    public void loadBillboard() throws Exception {
-        String resource = Main.class.getClassLoader().getResource(InfrastructureDepartment.BILLBOARD_FILE_NAME).getFile();
+    public void loadBillboard(String name) throws Exception {
+        String resource = Main.class.getClassLoader().getResource(name).getFile();
 
 
         File archivo = new File(resource);
@@ -108,53 +90,9 @@ public class InfrastructureDepartment {
 
     }
 
-    public void exportDangerousBillboardReport() throws IOException {
-        String msg = "";
-        msg+= "===========================\n";
-        msg+= "DANGEROUS BILLBOARD REPORT\n";
-        msg += "===========================\n";
-        for (int i = 0; i < billboards.size(); i++) {
-            if(billboards.get(i).calculateArea() > 160 ){
-                msg += "Billboard " + billboards.get(i).getBrand() + " with area "
-                        + billboards.get(i).calculateArea() + "\n";
-
-
-            }
-
-
-        }
-        File file = new File("Archivo\\Reporte.txt");
-        try {
-            PrintWriter salida = new PrintWriter(file);
-            salida.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace(System.out);
-        }
-
-        BufferedWriter writer = new BufferedWriter(
-                new FileWriter(file));
-
-        writer.write(msg);
-        writer.flush();
-        writer.close();
-    }
-
-    public void importData(String fn) {
-
-        String[] result = fn.split("\\+\\+");
-        double width = Double.parseDouble(result[0]);
-        double height = Double.parseDouble(result[1]);
-        boolean inUse = Boolean.parseBoolean(result[2]);
-        String brand= result[3];
-
-        addBillboard(width,height, inUse, brand);
 
 
 
-
-
-
-    }
 
 
     public String toString() {
@@ -218,6 +156,7 @@ public class InfrastructureDepartment {
 
             }
         }
+
         return msg;
     }
 

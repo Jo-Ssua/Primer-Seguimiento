@@ -11,9 +11,8 @@ public class Main {
     private Scanner reader;
    
     public static void main(String[] args) throws Exception {
-        //ejemploCrear();
+
         new Main();
-        //ejemploEscribir();
 
 
 

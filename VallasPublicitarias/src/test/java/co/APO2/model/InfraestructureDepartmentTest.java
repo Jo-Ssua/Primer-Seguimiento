@@ -11,16 +11,22 @@ import static org.junit.Assert.assertTrue;
 
 public class InfraestructureDepartmentTest {
 
-
     public InfrastructureDepartment testID;
 
-    {
-        try {
-            testID = new InfrastructureDepartment();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+
+    @Before
+    public void setUp(){
+        {
+            try {
+                testID = new InfrastructureDepartment();
+                testID.loadBillboard("Test.csv");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
+
     }
+
 
 
 
@@ -34,7 +40,7 @@ public class InfraestructureDepartmentTest {
 
 
 
-        //302,5
+
     }
     @Test
     public void testCalculateAverageWidht(){
@@ -43,7 +49,7 @@ public class InfraestructureDepartmentTest {
         assertEquals(722, widthTest, 0.1);
 
 
-        //722
+
     }
 
     @Test
