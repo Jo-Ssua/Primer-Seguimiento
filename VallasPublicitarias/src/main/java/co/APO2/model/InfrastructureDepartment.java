@@ -15,6 +15,8 @@ public class InfrastructureDepartment {
     public InfrastructureDepartment() throws Exception {
 
         billboards = new ArrayList<Billboard>();
+        //loadBillboard("Test.csv");
+
 
 
     }
@@ -65,9 +67,11 @@ public class InfrastructureDepartment {
                     
 
 
+                    if(width > 0 && height > 0){
+                        addBillboard(width,height,inUse,brand);
 
+                    }
 
-                    addBillboard(width,height,inUse,brand);
 
 
 
@@ -160,6 +164,8 @@ public class InfrastructureDepartment {
         return msg;
     }
 
+
+
     public  String getBillboardsPerBrand(){
         String msg = "";
         msg += "BILLBOARDS PER BRAND\n";
@@ -189,6 +195,7 @@ public class InfrastructureDepartment {
 
         return msg;
     }
+
 
 
 }

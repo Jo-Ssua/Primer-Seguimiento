@@ -19,6 +19,7 @@ public class InfraestructureDepartmentTest {
         {
             try {
                 testID = new InfrastructureDepartment();
+                //VallasPublicitarias\target\classes\Test.csv
                 testID.loadBillboard("Test.csv");
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -26,6 +27,8 @@ public class InfraestructureDepartmentTest {
         }
 
     }
+
+    
 
 
 
